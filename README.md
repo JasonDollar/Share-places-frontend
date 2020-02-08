@@ -1,0 +1,1 @@
+Frontend for MERN App, written with TypeScript
