@@ -8,3 +8,16 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.noUsers {
+  margin: 20% auto;
+  padding: 0;
+  width: 90%;
+  @media (min-width: 576px) {
+    width: 50%;
+  }
+}
+
+.centerText {
+  text-align: center;
+}

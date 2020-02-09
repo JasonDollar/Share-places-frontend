@@ -1,5 +1,6 @@
 import React from 'react'
 import UserItem from './UserItem'
+import Card from '../../shared/components/UIElements/Card'
 import { User } from '../userInterfaces'
 import styles from './UsersList.module.scss'
 
@@ -11,8 +12,10 @@ interface Props {
 const UsersList: React.FC<Props> = ({ items }): JSX.Element => {
   if (items.length === 0) {
     return (
-      <div>
-        <h2>No users found</h2>
+      <div className={styles.noUsers}>
+        <Card classNameProp={styles.centerText}>
+          <h2>No users found</h2>
+        </Card>
       </div>
     )
   }

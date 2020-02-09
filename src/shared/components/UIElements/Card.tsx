@@ -4,7 +4,7 @@ import styles from './Card.module.scss'
 
 interface Props {
   children: React.ReactNode
-  classNameProp: string
+  classNameProp?: string
 }
 
 const Card: React.FC<Props> = ({ children, classNameProp }) => (
