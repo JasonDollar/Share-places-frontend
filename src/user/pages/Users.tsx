@@ -5,17 +5,17 @@ const Users: React.FC = () => {
   const USERS = [
     {
       id: 1,
-      image: 'User.png',
+      image: 'https://www.w3schools.com/w3images/avatar2.png',
       name: 'user 1',
       placeCount: 12,
     }, {
       id: 2,
-      image: 'User.png',
+      image: 'https://www.w3schools.com/w3images/avatar2.png',
       name: 'user 2',
       placeCount: 12,
     }, {
       id: 3,
-      image: 'User.png',
+      image: 'https://www.w3schools.com/w3images/avatar2.png',
       name: 'user 3',
       placeCount: 12,
     }, 

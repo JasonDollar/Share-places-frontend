@@ -1,6 +1,7 @@
 import React from 'react'
 import UserItem from './UserItem'
 import { Item } from '../userInterfaces'
+import styles from './UsersList.module.scss'
 
 
 interface Props {
@@ -17,7 +18,7 @@ const UsersList: React.FC<Props> = ({ items }): JSX.Element => {
   }
 
   return (
-    <ul>
+    <ul className={styles.usersList}>
       {items.map(item => (
         <UserItem 
           key={item.id}
