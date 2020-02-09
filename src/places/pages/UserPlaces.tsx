@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import PlaceList from '../components/PlaceList'
 
 const FAKE_PLACES = [
@@ -8,7 +9,7 @@ const FAKE_PLACES = [
     title: 'Paris',
     description: 'Place Pigalle in Paris',
     address: '15 Boulevard de Clichy, 75009 Paris, Francja',
-    creatorId: 'u3',
+    creatorId: 'p3',
     coordinates: {
       lat: 23,
       long: 34,
@@ -20,7 +21,7 @@ const FAKE_PLACES = [
     title: 'Paris',
     description: 'Place Pigalle in Paris',
     address: '15 Boulevard de Clichy, 75009 Paris, Francja',
-    creatorId: 'u2',
+    creatorId: 'p2',
     coordinates: {
       lat: 23,
       long: 34,
@@ -29,7 +30,8 @@ const FAKE_PLACES = [
 ]
 
 const UserPlaces: React.FC = () => {
-  const [places] = useState(FAKE_PLACES)
+  const { userId } = useParams()
+  const [places] = useState(() => FAKE_PLACES.filter(item => item.creatorId === userId))
   return (
     <PlaceList places={places} />
   )
