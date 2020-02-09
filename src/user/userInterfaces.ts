@@ -1,6 +1,6 @@
 // fake interface
 export interface User {
-  id: number
+  id: string
   image?: string
   name: string
   placeCount: number
