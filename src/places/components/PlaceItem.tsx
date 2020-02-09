@@ -1,6 +1,7 @@
 import React from 'react'
 import { Place, Location } from '../placesInterfaces'
 import Card from '../../shared/components/UIElements/Card'
+import Button from '../../shared/components/FormElements/Button'
 
 import styles from './PlaceItem.module.scss'
 
@@ -10,7 +11,7 @@ interface Props extends Place {
 }
 
 const PlaceItem: React.FC<Props> = ({
-  imageUrl, title, address, description, 
+  imageUrl, title, address, description, id,
 }) => (
   <li className={styles.placeItem}>
     <Card classNameProp={styles.content}>
@@ -23,9 +24,9 @@ const PlaceItem: React.FC<Props> = ({
         <p>{description}</p>
       </div>
       <div className={styles.actions}>
-        <button>VIEW ON MAP</button>
-        <button>EDIT</button>
-        <button>DELETE</button>
+        <Button inverse>VIEW ON MAP</Button>
+        <Button to={`/places/${id}`}>EDIT</Button>
+        <Button danger>DELETE</Button>
       </div>
     </Card>
   </li>
