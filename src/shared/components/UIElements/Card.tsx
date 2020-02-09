@@ -1,9 +1,8 @@
 import React from 'react'
-
+import { PropsChildren } from '../../interfaces'
 import styles from './Card.module.scss'
 
-interface Props {
-  children: React.ReactNode
+interface Props extends PropsChildren {
   classNameProp?: string
 }
 
