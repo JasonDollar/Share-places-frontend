@@ -1,11 +1,11 @@
 import React from 'react'
 import UserItem from './UserItem'
-import { Item } from '../userInterfaces'
+import { User } from '../userInterfaces'
 import styles from './UsersList.module.scss'
 
 
 interface Props {
-  items: Item[]
+  items: User[]
 }
 
 const UsersList: React.FC<Props> = ({ items }): JSX.Element => {

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Item } from '../userInterfaces'
+import { User } from '../userInterfaces'
 import styles from './UserItem.module.scss'
 import Avatar from '../../shared/components/UIElements/Avatar'
 import Card from '../../shared/components/UIElements/Card'
 
 
-type Props = Item 
+type Props = User 
   
 
 const UserItem: React.FC<Props> = ({ 

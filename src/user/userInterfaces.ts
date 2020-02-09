@@ -1,5 +1,5 @@
 // fake interface
-export interface Item {
+export interface User {
   id: number
   image?: string
   name: string
