@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
-import { PropsChildren } from '../../interfaces'
 
 import styles from './SideDrawer.module.scss'
 
-interface Props extends PropsChildren {
+interface Props {
+  children: React.ReactNode
   show: boolean
   onClickHandler: () => void
 }

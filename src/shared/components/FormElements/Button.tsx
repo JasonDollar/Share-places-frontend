@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { PropsChildren } from '../../interfaces'
 
 import styles from './Button.module.scss'
 
-interface Props extends PropsChildren {
+interface Props {
+  children: React.ReactNode
   href?: string
   to?: string
   size?: string

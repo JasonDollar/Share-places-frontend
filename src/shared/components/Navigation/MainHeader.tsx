@@ -1,9 +1,12 @@
 import React from 'react'
-import { PropsChildren } from '../../interfaces'
 
 import styles from './MainHeader.module.scss'
 
-const MainHeader: React.FC<PropsChildren> = ({ children }) => (
+type Props = {
+  children: React.ReactNode
+}
+
+const MainHeader: React.FC<Props> = ({ children }) => (
   <header className={styles.mainHeader}>
     {children}
   </header>
