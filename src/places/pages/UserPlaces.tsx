@@ -10,9 +10,9 @@ const FAKE_PLACES = [
     description: 'Place Pigalle in Paris',
     address: '15 Boulevard de Clichy, 75009 Paris, Francja',
     creatorId: 'p3',
-    coordinates: {
-      lat: 23,
-      long: 34,
+    location: {
+      lat: 48.866667,
+      lng: 2.333333,
     },
   },
   {
@@ -22,9 +22,21 @@ const FAKE_PLACES = [
     description: 'Place Pigalle in Paris',
     address: '15 Boulevard de Clichy, 75009 Paris, Francja',
     creatorId: 'p2',
-    coordinates: {
-      lat: 23,
-      long: 34,
+    location: {
+      lat: 48.866667,
+      lng: 2.333333,
+    },
+  },
+  {
+    id: 'p4',
+    imageUrl: 'https://polskazachwyca.pl/wp-content/uploads/2018/02/p%C5%82ock-przysta%C5%84-fot.-Artur-Bociarski-shutterstock_721093561-696x464.jpg',
+    title: 'Płock',
+    description: 'Centrum?',
+    address: 'Grodzka 3',
+    creatorId: 'p3',
+    location: {
+      lat: 52.545,
+      lng: 19.686,
     },
   },
 ]

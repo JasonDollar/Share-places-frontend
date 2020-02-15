@@ -10,5 +10,5 @@ export interface Place {
 
 export interface Location {
   lat: number
-  long: number
+  lng: number
 }

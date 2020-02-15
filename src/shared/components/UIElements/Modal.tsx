@@ -43,7 +43,7 @@ const ModalOverlay: React.FC<OverlayProps> = ({
       </form>
     </div>
   )
-  return ReactDOM.createPortal(content, document.getElementById('modal-hook'))
+  return ReactDOM.createPortal(content, document.getElementById('modal-hook') as Element)
 }
 
 const Modal: React.FC<ModalProps> = props => {

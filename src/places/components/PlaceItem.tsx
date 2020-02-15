@@ -3,6 +3,7 @@ import { Place, Location } from '../placesInterfaces'
 import Card from '../../shared/components/UIElements/Card'
 import Button from '../../shared/components/FormElements/Button'
 import Modal from '../../shared/components/UIElements/Modal'
+import Map from '../../shared/components/UIElements/Map'
 
 import styles from './PlaceItem.module.scss'
 
@@ -12,7 +13,7 @@ interface Props extends Place {
 }
 
 const PlaceItem: React.FC<Props> = ({
-  imageUrl, title, address, description, id,
+  imageUrl, title, address, description, id, coordinates = { lat: 0, lng: 0 },
 }) => {
   const [showMap, setShowMap] = useState(false)
 
@@ -31,7 +32,7 @@ const PlaceItem: React.FC<Props> = ({
         footer={<Button onClick={closeMapHandler}>CLOSE</Button>}
       >
         <div className={styles.mapContainer}>
-          <h2>THE MAP</h2>
+          <Map zoom={16} center={coordinates} />
         </div>
       </Modal>
       <li className={styles.placeItem}>
