@@ -23,8 +23,7 @@ const SideDrawer: React.FC<Props> = ({ show, onClickHandler, children }) => {
     </CSSTransition>
   )
 
-  // had to change typings for createPortal to include HTMLElement and null
-  return ReactDOM.createPortal(content, document.getElementById('drawer-hook'))
+  return ReactDOM.createPortal(content, document.getElementById('drawer-hook') as Element)
 }
 
 export default SideDrawer
