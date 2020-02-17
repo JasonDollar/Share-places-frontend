@@ -24,7 +24,6 @@ export const validate = (value: any, validators: {type: string, val?: any}[]): b
   let isValid = true
   for (const validator of validators) {
     if (validator.type === VALIDATOR_TYPE_REQUIRE) {
-      console.log(validator.type, value)
       isValid = isValid && value.trim().length > 0
     }
     if (validator.type === VALIDATOR_TYPE_MINLENGTH) {

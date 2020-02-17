@@ -52,7 +52,7 @@ const Input: React.FC<Props> = ({
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: initialValue || '',
     isTouched: false,
-    isValid: true,
+    isValid: false,
   })
   useEffect(() => {
     onInput(id, inputState.value, inputState.isValid)
