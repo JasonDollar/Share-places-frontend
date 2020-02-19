@@ -1,34 +1,10 @@
-import React, { FormEvent, useCallback, useReducer } from 'react'
+import React from 'react'
 import Input from '../../shared/components/FormElements/Input'
 import Button from '../../shared/components/FormElements/Button'
-import {
-  VALIDATOR_REQUIRE, VALIDATOR_FILE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH, VALIDATOR_MIN, VALIDATOR_MAX, VALIDATOR_EMAIL,
-} from '../../shared/util/validators'
+import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from '../../shared/util/validators'
 import { useForm } from '../../shared/hooks/form-hook'
 
 import styles from './PlaceForm.module.scss'
-
-interface InputDetail {
-  value: string,
-  isValid: boolean
-}
-
-interface InputKey {
-  [key: string]: InputDetail
-}
-
-interface State {
-  inputs: InputKey
-  isValid: boolean
-}
-
-interface Action {
-  type: 'INPUT_CHANGE'
-  inputId: string
-  value: string
-  isValid: boolean
-}
-
 
 const NewPlaces: React.FC = () => {
   const [formState, inputHandler] = useForm({
@@ -46,7 +22,7 @@ const NewPlaces: React.FC = () => {
     },
   }, false)
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
   }
 
