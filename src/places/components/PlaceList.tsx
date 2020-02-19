@@ -2,6 +2,7 @@ import React from 'react'
 import { Place } from '../placesInterfaces'
 import Card from '../../shared/components/UIElements/Card'
 import PlaceItem from './PlaceItem'
+import Button from '../../shared/components/FormElements/Button'
 
 import styles from './PlaceList.module.scss'
 
@@ -16,7 +17,7 @@ const PlaceList: React.FC<Props> = ({ places }) => {
         <Card>
           <h2>No places found. Maybe create one?</h2>
           {/* change to link later */}
-          <button>Share place</button> 
+          <Button to="/places/new">Share place</Button> 
         </Card>
       </div>
     )
@@ -32,7 +33,7 @@ const PlaceList: React.FC<Props> = ({ places }) => {
           title={item.title}
           description={item.description}
           address={item.address}
-          creatorId={item.creator}
+          creatorId={item.creatorId}
           coordinates={item.location}
         />
       ))}

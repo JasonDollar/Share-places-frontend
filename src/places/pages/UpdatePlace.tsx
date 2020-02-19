@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Input from '../../shared/components/FormElements/Input'
 import Button from '../../shared/components/FormElements/Button'
+import Card from '../../shared/components/UIElements/Card'
 import {
   VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH,
 } from '../../shared/util/validators'
@@ -16,7 +17,7 @@ const FAKE_PLACES = [
     title: 'Paris',
     description: 'Place Pigalle in Paris',
     address: '15 Boulevard de Clichy, 75009 Paris, Francja',
-    creatorId: 'p3',
+    creatorId: 'u3',
     location: {
       lat: 48.866667,
       lng: 2.333333,
@@ -28,7 +29,7 @@ const FAKE_PLACES = [
     title: 'Paris',
     description: 'Place Pigalle in Paris',
     address: '15 Boulevard de Clichy, 75009 Paris, Francja',
-    creatorId: 'p2',
+    creatorId: 'u2',
     location: {
       lat: 48.866667,
       lng: 2.333333,
@@ -40,7 +41,7 @@ const FAKE_PLACES = [
     title: 'Płock',
     description: 'Centrum?',
     address: 'Grodzka 3',
-    creatorId: 'p3',
+    creatorId: 'u3',
     location: {
       lat: 52.545,
       lng: 19.686,
@@ -63,20 +64,21 @@ const UpdatePlace: React.FC = () => {
     },
   }, true)
   const identifiedPlace = FAKE_PLACES.find(item => item.id === placeId)
-
-
     
   useEffect(() => {
-    setFormData({
-      title: {
-        value: identifiedPlace?.title,
-        isValid: true,
-      },
-      description: {
-        value: identifiedPlace?.description,
-        isValid: true,
-      },
-    }, true)
+    if (identifiedPlace) {
+
+      setFormData({
+        title: {
+          value: identifiedPlace.title,
+          isValid: true,
+        },
+        description: {
+          value: identifiedPlace.description,
+          isValid: true,
+        },
+      }, true)
+    }
     setLoading(false)
   }, [setFormData, identifiedPlace])
 
@@ -86,7 +88,13 @@ const UpdatePlace: React.FC = () => {
   }
 
   if (!identifiedPlace) {
-    return <div className="center"><h2>Could not find the place!</h2></div>
+    return (
+      <div className="center">
+        <Card>
+          <h2>Could not find the place!</h2>
+        </Card>
+      </div>
+    )
   }
   
   // TEMPORARY = it is only here until backend is connected 

@@ -4,7 +4,7 @@ export interface Place {
   imageUrl: string
   description: string 
   address: string
-  creator?: string | number
+  creatorId?: string | number
   location?: Location 
 }
 

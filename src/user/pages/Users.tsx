@@ -4,17 +4,17 @@ import UsersList from '../components/UsersList'
 
 const FAKE_USERS = [
   {
-    id: 'p1',
+    id: 'u1',
     image: 'https://www.w3schools.com/w3images/avatar2.png',
     name: 'user 1',
     placeCount: 12,
   }, {
-    id: 'p2',
+    id: 'u2',
     image: 'https://www.w3schools.com/w3images/avatar2.png',
     name: 'user 2',
     placeCount: 12,
   }, {
-    id: 'p3',
+    id: 'u3',
     image: 'https://www.w3schools.com/w3images/avatar2.png',
     name: 'user 3',
     placeCount: 12,
