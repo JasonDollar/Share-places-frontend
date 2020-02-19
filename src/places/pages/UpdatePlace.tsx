@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Input from '../../shared/components/FormElements/Input'
 import Button from '../../shared/components/FormElements/Button'
@@ -49,19 +49,36 @@ const FAKE_PLACES = [
 ]
 
 const UpdatePlace: React.FC = () => {
+  const [loading, setLoading] = useState(true)
   const { placeId } = useParams()
-  
-  const identifiedPlace = FAKE_PLACES.find(item => item.id === placeId)
-  const [formState, inputHandler] = useForm({
+
+  const [formState, inputHandler, setFormData] = useForm({
     title: {
-      value: identifiedPlace?.title,
+      value: '',
       isValid: true,
     },
     description: {
-      value: identifiedPlace?.description,
+      value: '',
       isValid: true,
     },
   }, true)
+  const identifiedPlace = FAKE_PLACES.find(item => item.id === placeId)
+
+
+    
+  useEffect(() => {
+    setFormData({
+      title: {
+        value: identifiedPlace?.title,
+        isValid: true,
+      },
+      description: {
+        value: identifiedPlace?.description,
+        isValid: true,
+      },
+    }, true)
+    setLoading(false)
+  }, [setFormData, identifiedPlace])
 
   const placeUpdateSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -70,6 +87,11 @@ const UpdatePlace: React.FC = () => {
 
   if (!identifiedPlace) {
     return <div className="center"><h2>Could not find the place!</h2></div>
+  }
+  
+  // TEMPORARY = it is only here until backend is connected 
+  if (loading) {
+    return <div className="center"><h2>Loading</h2></div>
   }
 
   return (
