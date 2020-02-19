@@ -5,7 +5,7 @@ import styles from './Input.module.scss'
 interface Props {
   id: string
   label: string
-  element?: string
+  element?: 'input'
   type?: string
   placeholder?: string
   initialValue?: string
@@ -13,6 +13,7 @@ interface Props {
   rows?: number
   validators?: {type: string, value?: any}[]
   onInput: (id: string, value: any, isValid: boolean) => void
+  valid?: boolean
 }
 
 interface State {
@@ -47,12 +48,12 @@ const inputReducer = (state: State, action: Action): State => {
 }
 
 const Input: React.FC<Props> = ({
-  id, label, element, type, placeholder, rows, initialValue, errorText, validators, onInput,
+  id, label, element, type, placeholder, rows, initialValue, errorText, validators, onInput, valid,
 }) => {
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: initialValue || '',
     isTouched: false,
-    isValid: false,
+    isValid: valid || false,
   })
   useEffect(() => {
     onInput(id, inputState.value, inputState.isValid)

@@ -4,8 +4,9 @@ import Button from '../../shared/components/FormElements/Button'
 import {
   VALIDATOR_REQUIRE, VALIDATOR_FILE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH, VALIDATOR_MIN, VALIDATOR_MAX, VALIDATOR_EMAIL,
 } from '../../shared/util/validators'
+import { useForm } from '../../shared/hooks/form-hook'
 
-import styles from './NewPlaces.module.scss'
+import styles from './PlaceForm.module.scss'
 
 interface InputDetail {
   value: string,
@@ -28,54 +29,26 @@ interface Action {
   isValid: boolean
 }
 
-const formReducer = (state: State, action: Action): State => {
-  switch (action.type) {
-    case 'INPUT_CHANGE': 
-      let formIsValid = true
-      Object.keys(state.inputs).map(inputId => {
-        if (inputId === action.inputId) {
-          formIsValid = formIsValid && action.isValid
-        } else {
-          formIsValid = formIsValid && state.inputs[inputId].isValid
-        }
-      })
-      return {
-        ...state,
-        inputs: {
-          ...state.inputs,
-          [action.inputId]: { value: action.value, isValid: action.isValid },
-        },
-        isValid: formIsValid,
-      }
-    default:
-      return state
-  }
-}
 
 const NewPlaces: React.FC = () => {
-  const [formState, dispatch] = useReducer(formReducer, {
-    inputs: {
-      title: {
-        value: '',
-        isValid: false,
-      },
-      description: {
-        value: '',
-        isValid: false,
-      },
+  const [formState, inputHandler] = useForm({
+    title: {
+      value: '',
+      isValid: false,
     },
-    isValid: false,
-  })
+    description: {
+      value: '',
+      isValid: false,
+    },
+    address: {
+      value: '',
+      isValid: false,
+    },
+  }, false)
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(formState)
   }
-
-  const inputHandler = useCallback((id: string, value: any, isValid: boolean) => {
-    dispatch({ 
-      type: 'INPUT_CHANGE', inputId: id, value, isValid, 
-    })
-  }, [])
 
   return (
     <form className={styles.placeForm} onSubmit={handleSubmit}>
