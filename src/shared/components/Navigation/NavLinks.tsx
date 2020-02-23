@@ -6,7 +6,7 @@ import { AuthContext } from '../../context/auth-context'
 import styles from './NavLinks.module.scss'
 
 const NavLinks = () => {
-  const { isLoggedIn } = useContext(AuthContext)
+  const { isLoggedIn, logout } = useContext(AuthContext)
 
   return (
     <ul className={styles.navLinks}>
@@ -28,6 +28,7 @@ const NavLinks = () => {
           <NavLink to="/auth">AUTHENTICATE</NavLink>
         </li>
       )}
+      {isLoggedIn && <li><button type="button" onClick={logout}>LOGOUT</button></li>}
     </ul>
   )
 }
