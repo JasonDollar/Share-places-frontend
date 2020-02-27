@@ -1,5 +1,8 @@
 import React, { useState, useContext } from 'react'
+import axios from '../../shared/axios'
 import Card from '../../shared/components/UIElements/Card'
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner'
+import ErrorModal from '../../shared/components/UIElements/ErrorModal'
 import Input from '../../shared/components/FormElements/Input'
 import Button from '../../shared/components/FormElements/Button'
 import { VALIDATOR_EMAIL, VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from '../../shared/util/validators'
@@ -10,6 +13,8 @@ import styles from './Auth.module.scss'
 
 const AuthForm = () => {
   const [isLoginMode, setIsLoginMode] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState()
   const { login } = useContext(AuthContext)
 
   const [formState, inputHandler, setFormData] = useForm({
@@ -46,13 +51,46 @@ const AuthForm = () => {
     setIsLoginMode(state => !state)
   }
 
-  const authSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const authSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    login()
+    let res
+    setIsLoading(true)
+    try {
+      if (isLoginMode) {
+        res = await axios.post('/api/users/login', {
+          email: formState.inputs.email.value,
+          password: formState.inputs.password.value,
+        })
+      } else {
+        res = await axios.post('http://localhost:5000/api/users/signup', {
+          name: formState.inputs.name.value,
+          email: formState.inputs.email.value,
+          password: formState.inputs.password.value,
+        })
+      }
+      console.log('res', res)
+      setIsLoading(false)
+      if (res.status > 201) {
+        setError(res.data.message)
+        return
+      } 
+      login()
+    } catch (err) {
+      setIsLoading(false)
+      setError(err.message || 'Something went wrong')
+    }
+    console.log('maybe login')
+    // login()
+  }
+
+  const errorHandler = () => {
+    setError(null)
   }
 
   return (
     <Card classNameProp={styles.authentication}>
+      <ErrorModal error={error} onClear={errorHandler} />
+      {isLoading && <LoadingSpinner />}
       <h2>Login required</h2>
       <hr />
       <form onSubmit={authSubmitHandler}>
