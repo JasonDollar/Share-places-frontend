@@ -28,7 +28,7 @@ const UsersList: React.FC<Props> = ({ items }): JSX.Element => {
           id={item.id}
           name={item.name}
           image={item.image}
-          placeCount={item.placeCount}
+          placeCount={item.places.length ?? 0}
         />
       ))}
     </ul>

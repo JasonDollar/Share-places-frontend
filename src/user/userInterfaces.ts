@@ -1,8 +1,9 @@
-// fake interface
+import { Place } from '../places/placesInterfaces'
+
 export interface User {
   id: string
   image?: string
   name: string
-  placeCount: number
+  places: Place[] | []
   email?: string
 }

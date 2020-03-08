@@ -62,13 +62,13 @@ const AuthForm = () => {
           password: formState.inputs.password.value,
         })
       } else {
-        res = await axios.post('http://localhost:5000/api/users/signup', {
+        res = await axios.post('/api/users/signup', {
           name: formState.inputs.name.value,
           email: formState.inputs.email.value,
           password: formState.inputs.password.value,
         })
       }
-      console.log('res', res)
+      
       setIsLoading(false)
       if (res.status > 201) {
         setError(res.data.message)
@@ -79,8 +79,6 @@ const AuthForm = () => {
       setIsLoading(false)
       setError(err.message || 'Something went wrong')
     }
-    console.log('maybe login')
-    // login()
   }
 
   const errorHandler = () => {

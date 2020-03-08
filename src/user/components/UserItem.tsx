@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { User } from '../userInterfaces'
 import styles from './UserItem.module.scss'
 import Avatar from '../../shared/components/UIElements/Avatar'
 import Card from '../../shared/components/UIElements/Card'
 
 
-type Props = User 
-  
+type Props = {
+  id: string
+  name: string
+  placeCount: number
+  image?: string 
+} 
 
 const UserItem: React.FC<Props> = ({ 
   id, name, placeCount, image, 
@@ -28,7 +31,7 @@ const UserItem: React.FC<Props> = ({
         </div>
       </Link>
     </Card>
-    
+
   </li>
 )
 
